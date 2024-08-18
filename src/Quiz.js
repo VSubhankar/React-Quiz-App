@@ -270,7 +270,7 @@ function Quiz() {
                     )}
                     <div className="quiz-timer">
                         <p>Time left: {timeLeft} seconds</p>
-                        <p>Total time: {totalTime} seconds</p>
+                        <p>Total time: {Math.floor(totalTime / 60)} min {totalTime % 60} sec</p>
                         <p>Total score: {score}</p> {/* Displaying total score */}
                     </div>
                 </div>
