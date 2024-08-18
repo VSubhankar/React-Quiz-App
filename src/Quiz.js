@@ -186,7 +186,7 @@ function Quiz() {
                                 <th>Question</th>
                                 <th>Chosen Option</th>
                                 <th>Correct Answer</th>
-                                <th>Score Status</th>
+                                <th>Scored Correct</th>
                             </tr>
                         </thead>
                         <tbody>
