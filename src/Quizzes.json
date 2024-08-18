@@ -1,0 +1,267 @@
+{
+    "quizzes": [
+      {
+        "id":1,
+        "name": "Computer Networks Quiz",
+        "questions": [
+          {
+            "id": 1,
+            "name": "Which protocol is used to retrieve email from a mail server?",
+            "options": ["SMTP", "POP3", "IMAP", "FTP"],
+            "correctAnswer": "IMAP"
+          },
+          {
+            "id": 2,
+            "name": "Which of the following is a feature of IPv6?",
+            "options": ["128-bit address", "32-bit address", "64-bit address", "16-bit address"],
+            "correctAnswer": "128-bit address"
+          },
+          {
+            "id": 3,
+            "name": "What is the main advantage of using a mesh topology?",
+            "options": ["Reduced cabling cost", "Ease of setup", "Redundancy and fault tolerance", "Simple routing protocols"],
+            "correctAnswer": "Redundancy and fault tolerance"
+          },
+          {
+            "id": 4,
+            "name": "Which protocol is used for secure data transmission over the internet?",
+            "options": ["HTTP", "FTP", "HTTPS", "TELNET"],
+            "correctAnswer": "HTTPS"
+          },
+          {
+            "id": 5,
+            "name": "Which device is used to connect multiple networks together?",
+            "options": ["Router", "Switch", "Hub", "Repeater"],
+            "correctAnswer": "Router"
+          },
+          {
+            "id": 6,
+            "name": "What does the Time to Live (TTL) field in an IP packet header specify?",
+            "options": ["Maximum time a packet can exist in the network", "The amount of time a packet takes to reach its destination", "The total number of hops a packet can make", "The lifespan of the data within the packet"],
+            "correctAnswer": "Maximum time a packet can exist in the network"
+          },
+          {
+            "id": 7,
+            "name": "What is the purpose of a subnet mask?",
+            "options": ["To identify the network and host portions of an IP address", "To provide data security", "To assign IP addresses dynamically", "To encrypt network traffic"],
+            "correctAnswer": "To identify the network and host portions of an IP address"
+          },
+          {
+            "id": 8,
+            "name": "Which layer of the OSI model is responsible for routing?",
+            "options": ["Data Link", "Network", "Transport", "Application"],
+            "correctAnswer": "Network"
+          },
+          {
+            "id": 9,
+            "name": "What is the function of a DNS server?",
+            "options": ["To convert domain names to IP addresses", "To route packets across networks", "To store email messages", "To assign MAC addresses to devices"],
+            "correctAnswer": "To convert domain names to IP addresses"
+          },
+          {
+            "id": 10,
+            "name": "Which type of attack involves overwhelming a network with traffic?",
+            "options": ["Man-in-the-middle attack", "Denial-of-service (DoS) attack", "Phishing", "Spoofing"],
+            "correctAnswer": "Denial-of-service (DoS) attack"
+          }
+        ]
+      },
+      {
+        "id":2,
+        "name": "DBMS Quiz",
+        "questions": [
+          {
+            "id": 1,
+            "name": "Which of the following is a primary key?",
+            "options": ["A unique identifier for each record in a table", "A non-unique attribute used for searching", "A foreign key in a child table", "A composite key"],
+            "correctAnswer": "A unique identifier for each record in a table"
+          },
+          {
+            "id": 2,
+            "name": "Which SQL clause is used to filter records?",
+            "options": ["SELECT", "WHERE", "FROM", "ORDER BY"],
+            "correctAnswer": "WHERE"
+          },
+          {
+            "id": 3,
+            "name": "What is normalization in DBMS?",
+            "options": ["Organizing data to reduce redundancy", "Creating indexes for faster search", "Backing up data", "Encrypting data for security"],
+            "correctAnswer": "Organizing data to reduce redundancy"
+          },
+          {
+            "id": 4,
+            "name": "What is a foreign key?",
+            "options": ["A key that links two tables together", "A unique identifier for a record", "A field that can be left empty", "A primary key in the same table"],
+            "correctAnswer": "A key that links two tables together"
+          },
+          {
+            "id": 5,
+            "name": "Which command is used to remove a table from a database?",
+            "options": ["DELETE", "DROP", "REMOVE", "TRUNCATE"],
+            "correctAnswer": "DROP"
+          },
+          {
+            "id": 6,
+            "name": "What is a join operation in SQL?",
+            "options": ["Combining rows from two or more tables", "Filtering records based on a condition", "Grouping records by a specific column", "Updating records in a table"],
+            "correctAnswer": "Combining rows from two or more tables"
+          },
+          {
+            "id": 7,
+            "name": "Which of the following is a NoSQL database?",
+            "options": ["MySQL", "PostgreSQL", "MongoDB", "Oracle"],
+            "correctAnswer": "MongoDB"
+          },
+          {
+            "id": 8,
+            "name": "What is the purpose of an index in a database?",
+            "options": ["To speed up search queries", "To enforce referential integrity", "To store backup data", "To encrypt sensitive data"],
+            "correctAnswer": "To speed up search queries"
+          },
+          {
+            "id": 9,
+            "name": "What does ACID stand for in DBMS?",
+            "options": ["Atomicity, Consistency, Isolation, Durability", "Access, Control, Integrity, Data", "Active, Consistent, Isolated, Durable", "Automation, Control, Isolation, Data"],
+            "correctAnswer": "Atomicity, Consistency, Isolation, Durability"
+          },
+          {
+            "id": 10,
+            "name": "Which type of join returns all rows when there is a match in either table?",
+            "options": ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN"],
+            "correctAnswer": "FULL OUTER JOIN"
+          }
+        ]
+      },
+      {
+        "id":3,
+        "name": "Operating Systems Quiz",
+        "questions": [
+          {
+            "id": 1,
+            "name": "Which of the following is not a type of operating system?",
+            "options": ["Batch Operating System", "Distributed Operating System", "Real-time Operating System", "Database Operating System"],
+            "correctAnswer": "Database Operating System"
+          },
+          {
+            "id": 2,
+            "name": "What is the primary purpose of an operating system?",
+            "options": ["To manage computer hardware and software resources", "To compile code", "To manage databases", "To design user interfaces"],
+            "correctAnswer": "To manage computer hardware and software resources"
+          },
+          {
+            "id": 3,
+            "name": "Which of the following is a process management technique?",
+            "options": ["Paging", "Scheduling", "Swapping", "Thrashing"],
+            "correctAnswer": "Scheduling"
+          },
+          {
+            "id": 4,
+            "name": "What is a deadlock?",
+            "options": ["A situation where two or more processes are unable to proceed", "A type of network congestion", "A method of file management", "A software bug"],
+            "correctAnswer": "A situation where two or more processes are unable to proceed"
+          },
+          {
+            "id": 5,
+            "name": "Which system call is used to create a new process?",
+            "options": ["fork()", "exec()", "wait()", "kill()"],
+            "correctAnswer": "fork()"
+          },
+          {
+            "id": 6,
+            "name": "What is the role of a scheduler in an operating system?",
+            "options": ["To determine which process runs at a given time", "To allocate memory to processes", "To manage file systems", "To handle interrupts"],
+            "correctAnswer": "To determine which process runs at a given time"
+          },
+          {
+            "id": 7,
+            "name": "What is virtual memory?",
+            "options": ["A technique that allows the execution of processes that are not completely in memory", "A type of RAM", "A method to store data on the cloud", "A physical extension of the main memory"],
+            "correctAnswer": "A technique that allows the execution of processes that are not completely in memory"
+          },
+          {
+            "id": 8,
+            "name": "Which of the following is a file management operation?",
+            "options": ["Reading a file", "Scheduling a task", "Allocating memory", "Handling interrupts"],
+            "correctAnswer": "Reading a file"
+          },
+          {
+            "id": 9,
+            "name": "What is the purpose of the 'chmod' command in Unix/Linux?",
+            "options": ["To change the permissions of a file or directory", "To copy files", "To move files", "To delete files"],
+            "correctAnswer": "To change the permissions of a file or directory"
+          },
+          {
+            "id": 10,
+            "name": "Which scheduling algorithm assigns the CPU to the process with the shortest next burst time?",
+            "options": ["Round Robin", "First-Come, First-Served", "Shortest Job Next", "Priority Scheduling"],
+            "correctAnswer": "Shortest Job Next"
+          }
+        ]
+        },
+        {
+          "id": 4,
+          "name": "DSA Quiz",
+          "questions": [
+            {
+              "id": 1,
+              "name": "What is the time complexity of binary search?",
+              "options": ["O(log n)", "O(n)", "O(n log n)", "O(1)"],
+              "correctAnswer": "O(log n)"
+            },
+            {
+              "id": 2,
+              "name": "Which data structure is used for implementing recursion?",
+              "options": ["Queue", "Stack", "Array", "Linked List"],
+              "correctAnswer": "Stack"
+            },
+            {
+              "id": 3,
+              "name": "What is the space complexity of an iterative solution for the Fibonacci sequence?",
+              "options": ["O(1)", "O(n)", "O(n^2)", "O(log n)"],
+              "correctAnswer": "O(1)"
+            },
+            {
+              "id": 4,
+              "name": "Which of the following is a self-balancing binary search tree?",
+              "options": ["Binary Search Tree", "AVL Tree", "Red-Black Tree", "Both AVL Tree and Red-Black Tree"],
+              "correctAnswer": "Both AVL Tree and Red-Black Tree"
+            },
+            {
+              "id": 5,
+              "name": "What is the worst-case time complexity of Quicksort?",
+              "options": ["O(n^2)", "O(n log n)", "O(n)", "O(log n)"],
+              "correctAnswer": "O(n^2)"
+            },
+            {
+              "id": 6,
+              "name": "Which of the following is true about heap data structure?",
+              "options": ["Heap is a complete binary tree", "Heap is a binary search tree", "Heap is an AVL tree", "Heap is a Red-Black tree"],
+              "correctAnswer": "Heap is a complete binary tree"
+            },
+            {
+              "id": 7,
+              "name": "What is the time complexity of inserting an element in a binary heap?",
+              "options": ["O(log n)", "O(n)", "O(1)", "O(n log n)"],
+              "correctAnswer": "O(log n)"
+            },
+            {
+              "id": 8,
+              "name": "Which algorithm is used to find the shortest path in a graph with negative edge weights?",
+              "options": ["Dijkstra's algorithm", "Prim's algorithm", "Kruskal's algorithm", "Bellman-Ford algorithm"],
+              "correctAnswer": "Bellman-Ford algorithm"
+            },
+            {
+              "id": 9,
+              "name": "Which of the following sorting algorithms has the best average-case time complexity?",
+              "options": ["Bubble Sort", "Merge Sort", "Selection Sort", "Insertion Sort"],
+              "correctAnswer": "Merge Sort"
+            },
+            {
+              "id": 10,
+              "name": "Which of the following is an application of Depth First Search (DFS)?",
+              "options": ["Finding connected components in a graph", "Finding shortest path in an unweighted graph", "Topological sorting", "Both Finding connected components and Topological sorting"],
+              "correctAnswer": "Both Finding connected components and Topological sorting"
+            }
+          ]
+        }                  
+    ]}

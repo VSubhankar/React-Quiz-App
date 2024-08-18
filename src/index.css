@@ -11,3 +11,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+body {
+  background-color: #adbbda;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.quiz-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.option-button {
+  width: 48%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-button:hover {
+  background-color: #f8f9fa;
+}
+
+.option-button.selected {
+  background-color: #ffffe0;
+}
+
+.option-button.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.option-button.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
+.btn-lg-custom {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.text-center {
+  text-align: center;
+}
