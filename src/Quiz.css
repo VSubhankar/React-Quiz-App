@@ -1,95 +1,106 @@
+/* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Global Body Styling */
 body {
-  background: #360033;  /* Fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0b8793, #360033);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0b8793, #360033); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: #ffffff;
+  background: linear-gradient(to right, #0b8793, #360033); /* Gradient background */
+  color: #ffffff; /* White text color */
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Applying Roboto font */
 }
 
+/* Main Quiz App Container */
 .quiz-app {
   padding: 2rem;
 }
 
+/* Quiz List Title Styling */
 .quiz-list h1 {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;  /* Increased font size for title */
+  font-size: 2rem; /* Emphasize title size */
 }
 
+/* Quiz Grid Layout */
 .quiz-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); /* Responsive columns */
   gap: 2rem;
   padding: 2rem;
 }
 
+/* Individual Quiz Card Styling */
 .quiz-card {
-  background-color: #3498db;  /* Blue container background */
-  border-radius: 1rem;  /* Rounded container edges */
+  background-color: #3498db; /* Blue background */
+  border-radius: 1rem; /* Rounded corners */
   padding: 2rem;
-  font-size: large;
   text-align: center;
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  font-size: large;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
+/* Quiz Logo Styling */
 .quiz-logo {
   width: 12.5rem;
   height: 12.5rem;
-  object-fit: contain;
-  border-radius: 20%;  /* Rounded corners for icons */
+  object-fit: contain; /* Ensure logos fit within their container */
+  border-radius: 20%; /* Rounded corners */
   margin-bottom: 1rem;
 }
 
+/* Quiz Title Styling */
 .quiz-title {
-  align-items: center;
-  font-size: 1.5rem;  /* Increased font size for quiz titles */
   margin-top: 1rem;
+  font-size: 1.5rem; /* Larger title font */
   color: #ecf0f1;
   border-radius: 15%;
+  align-items: center;
 }
 
+/* Quiz Item Button Styling */
 .quiz-item-card button {
   padding: 1rem 2rem;
   font-size: 1.5rem;
   background-color: #3498db;
-  color: #286e7f;
+  color: #ecf0f1;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
 }
 
+/* Button Hover Effect */
 .quiz-item-card button:hover {
-  background-color: #2980b9;
+  background-color: #2980b9; /* Darker blue on hover */
 }
 
+/* Quiz Container Styling */
 .quiz-container {
-  align-items: center;
-  font-size: 1.25rem;  /* Increased font size for questions and titles */
-  background-color: #34495e;
-  padding: 2rem;
-  border-radius: 1rem;
   width: 60%;
   height: 75%;
-  margin: 0 auto; /* Center the container horizontally */
+  margin: 0 auto; /* Horizontally center the container */
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #34495e; /* Dark gray background */
+  font-size: 1.25rem; /* Larger font for content */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
+/* Options Container Styling */
 .options-container {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.option {
+/* Individual Option Styling */
+.option, .option-button {
   background-color: #3d566e;
   padding: 1rem;
   border-radius: 2.5rem;
@@ -97,92 +108,102 @@ body {
   color: #ecf0f1;
   cursor: pointer;
   text-align: center;
-  font-size: 1rem;  /* Font size for options */
-  /* transition: background-color 0.3s ease; */
+  width: fit-content;
+  font-size: 1rem; /* Option font size */
 }
 
+/* Option Selected State */
 .option.selected {
-  background-color: #f20000;  /* Dark Yellow when selected */
+  background-color: #f20000; /* Red background when selected */
 }
 
+/* Correct and Incorrect Option States */
 .option.correct {
-  background-color: #00ff6a;  /* Dark Green for correct answer */
-  border-color: #0bff70;
+  background-color: #00ff6a; /* Green background for correct answers */
+  border-color: #0bff70; /* Light green border for correct answers */
 }
 
 .option.incorrect {
-  background-color: #ff1900;  /* Red for incorrect answer */
-  border-color: #fc200c;
+  background-color: #ff1900; /* Red background for incorrect answers */
+  border-color: #fc200c; /* Dark red border for incorrect answers */
 }
 
+/* Control Buttons Container */
 .controls {
   display: flex;
   gap: 20px;
   justify-content: space-between;
   margin-top: 5px;
+  align-items: center;
 }
 
-.controls button {
-  padding: 0.5rem 0.5rem;
+/* Shared Button Styling */
+.controls button, .btn-primary, .btn-danger, .btn-success, .btn-secondary {
+  padding: 0.1rem 0.5rem;
   font-size: 1.25rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  margin: 5px;
+}
+.option-button.selected {
+  background-color: gray; /* or any color you want */
 }
 
+.option-button.correct {
+  background-color: green;
+}
+
+
+/* Primary Button Styling */
 .btn-primary {
   background-color: #3498db;
   color: #ecf0f1;
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: #2980b9; /* Darker blue on hover */
 }
 
+/* Danger Button Styling */
 .btn-danger {
   background-color: #e74c3c;
   color: #ecf0f1;
 }
 
 .btn-danger:hover {
-  background-color: #c0392b;
+  background-color: #c0392b; /* Darker red on hover */
 }
 
-.status #s1{
+/* Status Styling */
+.status #s1 {
   text-align: center;
   flex-direction: row !important;
   margin-top: 2rem;
-  color: #e7edee;
+  color: #ecf0f1;
 }
 
+/* Status Paragraph Styling */
 .status p {
   margin: 0.5rem 0;
 }
 
+/* Option Container with Logo */
 .option-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 1px;
 }
 
-.option-button {
-  flex-grow: 1;
-  background-color: #3d566e;
-  padding: 1rem;
-  border-radius: 2.5rem;
-  border: 0.2rem solid #3498db;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-
-
+/* Option Logo Styling */
 .option-logo {
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
 }
 
+.quiz-report {
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+}

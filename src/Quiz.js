@@ -8,7 +8,6 @@ import OSLogo from './OS-Logo.png';
 import WrongLogo from './wrong-Logo.png';
 import RightLogo from './right-Logo.png';
 
-
 const quizLogos = {
     1: CNLogo,
     2: DBMSLogo,
@@ -23,10 +22,23 @@ function Quiz() {
     const [timeLeft, setTimeLeft] = useState(15);
     const [totalTime, setTotalTime] = useState(0);
     const [score, setScore] = useState(0);
-    const [autoNextTime, setAutoNextTime] = useState(5);
+    const [autoNextTime, setAutoNextTime] = useState(8);
     const [isAnswered, setIsAnswered] = useState(false);
-    const [timerInterval, setTimerInterval] = useState(null);
-    const [autoNextInterval, setAutoNextInterval] = useState(null);
+    const [responses, setResponses] = useState(Array(10).fill({ chosenOption: 'NA', correctAnswer: '', isCorrect: false }));
+    const [quizCompleted, setQuizCompleted] = useState(false);
+    const [statusMessage, setStatusMessage] = useState("Choose your option and click on save");
+
+    useEffect(() => {
+        if (currentQuiz) {
+            // Prefetch the correct answers into the responses matrix
+            const updatedResponses = currentQuiz.questions.map(question => ({
+                chosenOption: 'NA',
+                correctAnswer: question.correctAnswer,
+                isCorrect: false
+            }));
+            setResponses(updatedResponses);
+        }
+    }, [currentQuiz]);
 
     useEffect(() => {
         if (currentQuiz && !isAnswered) {
@@ -41,12 +53,8 @@ function Quiz() {
                 });
                 setTotalTime((prevTime) => prevTime + 1);
             }, 1000);
-            setTimerInterval(interval);
-        } else {
-            clearInterval(timerInterval);
+            return () => clearInterval(interval);
         }
-
-        return () => clearInterval(timerInterval);
     }, [currentQuiz, isAnswered]);
 
     useEffect(() => {
@@ -61,12 +69,8 @@ function Quiz() {
                     return prevTime - 1;
                 });
             }, 1000);
-            setAutoNextInterval(interval);
-        } else {
-            clearInterval(autoNextInterval);
+            return () => clearInterval(interval);
         }
-
-        return () => clearInterval(autoNextInterval);
     }, [isAnswered, autoNextTime]);
 
     const handleOptionSelect = (option) => {
@@ -77,24 +81,41 @@ function Quiz() {
 
     const handleSave = () => {
         if (!isAnswered) {
+            const correctAnswer = currentQuiz.questions[currentQuestionIndex].correctAnswer;
+            const isCorrect = userChoice === correctAnswer;
             setIsAnswered(true);
-            if (userChoice === currentQuiz.questions[currentQuestionIndex].correctAnswer) {
+
+            const updatedResponses = [...responses];
+            updatedResponses[currentQuestionIndex] = {
+                chosenOption: userChoice,
+                correctAnswer: correctAnswer,
+                isCorrect: isCorrect
+            };
+            setResponses(updatedResponses);
+
+            if (isCorrect) {
                 setScore(score + 1);
+                setStatusMessage("Correct answer, keep going champ!");
+            } else if (userChoice === 'NA') {
+                setStatusMessage("No response received, displaying the correct answer");
+            } else {
+                setStatusMessage("Better luck next time!");
             }
-            clearInterval(timerInterval);
+
+            if (currentQuestionIndex === currentQuiz.questions.length - 1) {
+                setQuizCompleted(true);
+            }
         }
     };
 
     const handleNext = () => {
         setIsAnswered(false);
         setUserChoice('NA');
-        setAutoNextTime(5);
+        setAutoNextTime(8);
         setTimeLeft(15);
         if (currentQuestionIndex < currentQuiz.questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            alert(`Quiz completed! Your score: ${score}/${currentQuiz.questions.length}`);
-            setCurrentQuiz(null);
+            setStatusMessage("Choose your option and click on save");
         }
     };
 
@@ -105,10 +126,11 @@ function Quiz() {
         setTimeLeft(15);
         setTotalTime(0);
         setScore(0);
-        setAutoNextTime(5);
+        setAutoNextTime(8);
         setIsAnswered(false);
-        clearInterval(timerInterval);
-        clearInterval(autoNextInterval);
+        setResponses(Array(10).fill({ chosenOption: 'NA', correctAnswer: '', isCorrect: false }));
+        setQuizCompleted(false);
+        setStatusMessage("Choose your option and click on save");
     };
 
     const handleQuizSelect = (quiz) => {
@@ -117,9 +139,25 @@ function Quiz() {
         setScore(0);
         setTotalTime(0);
         setTimeLeft(15);
-        setAutoNextTime(5);
+        setAutoNextTime(8);
         setIsAnswered(false);
         setUserChoice('NA');
+        const updatedResponses = quiz.questions.map(question => ({
+            chosenOption: 'NA',
+            correctAnswer: question.correctAnswer,
+            isCorrect: false
+        }));
+        setResponses(updatedResponses);
+        setQuizCompleted(false);
+        setStatusMessage("Choose your option and click on save");
+    };
+
+    const handleSubmit = () => {
+        setQuizCompleted(true);
+    };
+
+    const calculateScorePercentage = () => {
+        return Math.round((score / currentQuiz.questions.length) * 100);
     };
 
     return (
@@ -138,36 +176,64 @@ function Quiz() {
                         ))}
                     </div>
                 </div>
+            ) : quizCompleted ? (
+                <div className="quiz-report">
+                    <h2>Your Score is {calculateScorePercentage()}%</h2>
+                    <table className="report-table table table-bordered table-dark">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Question</th>
+                                <th>Chosen Option</th>
+                                <th>Correct Answer</th>
+                                <th>Score Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {responses.map((response, index) => (
+                                <tr key={index} className={response.isCorrect ? 'correct' : 'incorrect'}>
+                                    <td>{index + 1}</td>
+                                    <td>{currentQuiz.questions[index].name}</td>
+                                    <td>{response.chosenOption}</td>
+                                    <td>{response.correctAnswer}</td>
+                                    <td>{response.isCorrect ? 'Yes' : 'No'}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <button className="btn btn-primary" onClick={handleReset}>Restart Quiz</button>
+                </div>
             ) : (
                 <div className="quiz-container">
                     <h2 className="quiz-title">{currentQuiz.name}</h2>
                     <p className="quiz-question">Question {currentQuestionIndex + 1}/{currentQuiz.questions.length}</p>
                     <p className="quiz-question">{currentQuiz.questions[currentQuestionIndex].name}</p>
-                        <div className="options-container">
-                            {currentQuiz.questions[currentQuestionIndex].options.map((option) => {
-                                const isCorrect = option === currentQuiz.questions[currentQuestionIndex].correctAnswer;
-                                const isSelected = option === userChoice;
-                                return (
-                                    <div key={option} className="option-container">
-                                        <button
-                                            className={`option-button ${isSelected ? 'selected' : ''} ${isAnswered && isCorrect ? 'correct' : ''} ${isAnswered && isSelected && !isCorrect ? 'incorrect' : ''}`}
-                                            onClick={() => handleOptionSelect(option)}
-                                        >
-                                            {option}
-                                        </button>
-                                        {isAnswered && (isCorrect || isSelected) && (
-                                            <img
-                                                src={isCorrect ? RightLogo : WrongLogo}
-                                                alt={isCorrect ? "Correct" : "Incorrect"}
-                                                className="option-logo"
-                                            />
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
+                    <p className="status-message">{statusMessage}</p>
+                    <div className="options-container">
+                        {currentQuiz.questions[currentQuestionIndex].options.map((option) => {
+                            const isCorrect = option === currentQuiz.questions[currentQuestionIndex].correctAnswer;
+                            const isSelected = option === userChoice;
+                            return (
+                                <div key={option} className="option-container">
+                                    <button
+                                        className={`option-button ${isSelected ? 'selected' : ''} ${isAnswered && isCorrect ? 'correct' : ''} ${isAnswered && isSelected && !isCorrect ? 'incorrect' : ''}`}
+                                        onClick={() => handleOptionSelect(option)}
+                                    >
+                                        {option}
+                                    </button>
+                                    {isAnswered && (isCorrect || isSelected) && (
+                                        <img
+                                            src={isCorrect ? RightLogo : WrongLogo}
+                                            alt={isCorrect ? "Correct" : "Incorrect"}
+                                            className="option-logo"
+                                        />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
 
-                    <div className="controls">
+                    <div className="quiz-controls">
                         <button
                             className="btn btn-danger"
                             onClick={handleReset}
@@ -175,26 +241,35 @@ function Quiz() {
                             Reset
                         </button>
                         <button
-                            className={`btn ${isAnswered ? 'btn-disabled' : 'btn-primary'}`}
+                            className="btn btn-primary"
                             onClick={handleSave}
                             disabled={isAnswered}
                         >
                             Save Answer
                         </button>
                         <button
-                            className="btn btn-primary"
+                            className="btn btn-secondary"
                             onClick={handleNext}
+                            disabled={!isAnswered}
                         >
                             Next
                         </button>
+                        <button
+                            className="btn btn-success"
+                            onClick={handleSubmit}
+                        >
+                            Submit Quiz
+                        </button>
                     </div>
-                    <div id ="s1" className="status">
-                        <p>Time Left: {timeLeft}s &nbsp;
-                        Total Time: {Math.floor(totalTime / 60)}:{totalTime % 60}&nbsp;
-                        Score: {score}</p>
-                        {isAnswered && (
-                            <p>Auto Next in: {autoNextTime}s</p>
-                        )}
+                    {isAnswered && (
+                        <div className="auto-save-timer">
+                            <p>Auto save in: {autoNextTime} seconds</p>
+                        </div>
+                    )}
+                    <div className="quiz-timer">
+                        <p>Time left: {timeLeft} seconds</p>
+                        <p>Total time: {totalTime} seconds</p>
+                        <p>Total score: {score}</p> {/* Displaying total score */}
                     </div>
                 </div>
             )}
