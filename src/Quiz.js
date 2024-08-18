@@ -191,7 +191,7 @@ function Quiz() {
                         </thead>
                         <tbody>
                             {responses.map((response, index) => (
-                                <tr key={index} className={response.isCorrect ? 'correct' : 'incorrect'}>
+                                <tr key={index} className={response.isCorrect ? 'table-success' : 'table-danger'}>
                                     <td>{index + 1}</td>
                                     <td>{currentQuiz.questions[index].name}</td>
                                     <td>{response.chosenOption}</td>

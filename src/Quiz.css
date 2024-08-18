@@ -207,3 +207,14 @@ body {
   text-align: center;
   margin: auto 0;
 }
+/* More specific styling to override Bootstrap's .table-dark */
+.report-table .table .table-bordered .table-dark td #correct {
+  background-color: #0bff70 !important;
+  color: #ffffff !important; /* Ensure text color is also visible */
+}
+
+.report-table.table-dark tbody tr#incorrect {
+  background-color: #e74c3c !important;
+  color: #ffffff !important; /* Ensure text color is also visible */
+}
+
