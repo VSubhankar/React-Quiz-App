@@ -178,7 +178,9 @@ function Quiz() {
                 </div>
             ) : quizCompleted ? (
                 <div className="quiz-report">
-                    <h2>Your Score is {calculateScorePercentage()}%</h2>
+                    <h1>Quiz Completed Sucessfully</h1> <br/>
+                    <h2>Your Score is {calculateScorePercentage()}%</h2> <br/>
+                    <h2>Here is your Quiz Summary</h2>
                     <table className="report-table table table-bordered table-dark">
                         <thead>
                             <tr>
